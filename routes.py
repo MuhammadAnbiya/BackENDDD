@@ -1,6 +1,6 @@
 from flask import request, session, flash, redirect, url_for, render_template
 from models import DataUser
-from utils import is_valid_email, is_valid_password, send_password_reset_email
+from utils22 import is_valid_email, is_valid_password, send_password_reset_email
 from flask_mail import Message
 from app import app, db
 from flask_bcrypt import generate_password_hash
