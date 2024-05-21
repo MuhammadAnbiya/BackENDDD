@@ -1,25 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <center><h3>Dashboard</h3></center>
-        <div class="row main" style="padding-top:50px;">
-            <div class="main-login main-center">
-                <h3>Selamat Datang, {{ name }}</h3>
-                <a href="{{ url_for('reset_password_request') }}" class="btn btn-warning btn-lg btn-block">Reset Password</a>
-                <form method="POST" action="{{ url_for('logout') }}">
-                    <input type="submit" value="Logout" class="btn btn-danger btn-lg btn-block">
-                </form>
-            </div>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-T0zKfN4aRwZxKhtJcVSGLQoU/HsbSRt8pqE5QCb43Hctb06mf8YZI77N2M1zXZIo" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFwA5Xh/I0zY1zN4xLsiwM1sBfB" crossorigin="anonymous"></script>
+    <h1>Selamat datang, {{ name }}!</h1>
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
