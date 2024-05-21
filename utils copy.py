@@ -1,7 +1,6 @@
 import re
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from app import app
 
 import smtplib
 
@@ -11,18 +10,19 @@ def is_valid_email(email):
 def is_valid_password(password):
     return len(password) >= 8
 
-def send_verification_email(email, captcha_code):
-    sender_email = app.config["MAIL_USERNAME"] 
-    sender_password = app.config["MAIL_PASSWORD"]      
-
-    receiver_email = email
+def send_verification_email(email, token):
     msg = MIMEMultipart()
+
+    sender_email = app.config["MAIL_USERNAME"]
+    sender_password = app.config["MAIL_PASSWORD"]
+    receiver_email = email
 
     msg['From'] = sender_email
     msg['To'] = receiver_email
-    msg['Subject'] = "Verifikasi CAPTCHA"
+    msg['Subject'] = "Password Reset Request"
 
-    body = f"Kode CAPTCHA Anda adalah: {captcha_code}. Silakan masukkan kode ini untuk verifikasi."
+    reset_password_url = url_for('reset_password', token=token, _external=True)
+    body = f"To reset your password, visit the following link: {reset_password_url}"
 
     msg.attach(MIMEText(body, 'plain'))
 
@@ -31,12 +31,10 @@ def send_verification_email(email, captcha_code):
         server.starttls()
         server.login(sender_email, sender_password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
+        flash('Check your email for the instructions to reset your password', 'info')
         print("Email verifikasi CAPTCHA telah berhasil dikirim.")
     except Exception as e:
-        print(f"Terjadi kesalahan saat mengirim email: {e}")
+        flash(f"Terjadi kesalahan saat mengirim email: {e}", 'danger')
     finally:
         server.quit()
 
-email = "anbiya17agustus@gmail.com"  
-captcha_code = "123456"           
-send_verification_email(email, captcha_code)
