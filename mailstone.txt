@@ -1,0 +1,6 @@
+apa yang sudah bisa digunakan : 
+    1. sudah connect dengan database
+    2. sudah ada autentikasi password registrasi
+    3. 
+    4. 
+    5. 
