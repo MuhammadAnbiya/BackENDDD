@@ -1,11 +1,15 @@
 from flask import Flask, session, flash, redirect, url_for, render_template
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+
 import os
 
 app = Flask(__name__)
 db = SQLAlchemy()
 api = Api(app)
+bcrypt = Bcrypt(app)
+
 
 filename = os.path.dirname(os.path.abspath(__file__))
 database = "sqlite:///" + os.path.join(filename, "db.sqlite")

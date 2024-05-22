@@ -12,17 +12,17 @@
             <div class="row main" style="padding-top:50px;">
                 <div class="main-login main-center">
                     <h3>Silahkan Mengisi Form Login</h3>
-                    <p>
-                        {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                        {% for message in messages %}
-                    <div class="alert alert-primary">
-                        <strong>{{ message }}</strong>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                    </p>
+                        <p>
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-primary">
+                                <strong>{{ message }}</strong>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                        </p>
                     <form method="POST" action="{{ url_for('login') }}">
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Your Email</label>
